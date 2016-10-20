@@ -4,61 +4,61 @@ import UIKit
 
 
 
-class Person {
-    
+protocol TextDescription {
+    var textDescription: String { get }
+}
+
+class Person: TextDescription {
     var name: String
     var height: Double
     var favoriteFood: String
-    
-    var description: String {
-        return "Name: \(jim.name) \nHeight: \(jim.height) \nFavorite Food: \(jim.favoriteFood)"
+    var textDescription: String {
+        return "Name: \(name)\nHeight: \(height) feet\nFavorite Food: \(favoriteFood)"
     }
     
     init(name: String, height: Double, favoriteFood: String) {
         self.name = name
         self.height = height
         self.favoriteFood = favoriteFood
+        
     }
-    
 }
 
-let jim = Person(name: "Jim", height: 64.0, favoriteFood: "Pasta")
+let person1 = Person(name: "Doug", height: 5.9, favoriteFood: "Tofu")
+print(person1.textDescription)
 
-print(jim.description)
-//Name: Jim
-//Height: 64.0
-//Favorite Food: Pasta
-
-
-
-protocol PrettyDescription {
-    
-    var description: String { get }
-    
-}
-
-
-
-class Animal {
-    
-    var name: String
+class Building: TextDescription {
+    var address: Int
     var height: Double
-    var favoriteFood: String
-    
-    init(name: String, height: Double, favoriteFood: String) {
-        self.name = name
-        self.height = height
-        self.favoriteFood = favoriteFood
+    var textDescription: String {
+        return "Address: \(address)\nHeight: \(height)"
     }
     
+    init(address: Int, height: Double) {
+        self.address = address
+        self.height = height
+    }
 }
 
-let prettyThings: [PrettyDescription] = []
+let building1 = Building(address: 1111, height: 100)
+print(building1.textDescription)
 
-for prettyThing in prettyThings {
-    
-    print(prettyThing.description)
-    
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
